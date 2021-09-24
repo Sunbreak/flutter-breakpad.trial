@@ -1,16 +1,29 @@
 # flutter_breakpad
 
-A new Flutter project.
+An example Flutter project for demostrating how to intergrate [Google Breakpad](https://chromium.googlesource.com/breakpad/breakpad)
 
-## Getting Started
+## Android
 
-This project is a starting point for a Flutter application.
+- run on macOS/Linux
 
-A few resources to get you started if this is your first Flutter project:
+```sh
+# Device/emulator connected
+$ android_abi=`adb shell getprop ro.product.cpu.abi`
+$ flutter run
+✓ Built build/app/outputs/flutter-apk/app-debug.apk.
+I/flutter_breakpad(31631): JNI_OnLoad
+D/flutter_breakpad(31631): Dump path: /data/data/com.example.flutter_breakpad/files/f5258c0e-eff3-433a-7ea47880-c756fc17.dmp
+$ adb shell "run-as com.example.flutter_breakpad sh -c 'cat /data/data/com.example.flutter_breakpad/files/f5258c0e-eff3-433a-7ea47880-c756fc17.dmp'" >| libflutter-breakpad.so.dmp
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- run on Linux (e.g. https://multipass.run/)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+> $CLI_BREAKPAD is local clone of https://github.com/Sunbreak/cli-breakpad.trial
+
+```sh
+$ $CLI_BREAKPAD/breakpad/linux/$(arch)/dump_syms build/app/intermediates/cmake/debug/obj/${android_abi}/libflutter-breakpad.so > libflutter-breakpad.so.sym
+$ uuid=`awk 'FNR==1{print \$4}' libflutter-breakpad.so.sym`
+$ mkdir -p symbols/libflutter-breakpad.so/$uuid/
+$ mv ./libflutter-breakpad.so.sym symbols/libflutter-breakpad.so/$uuid/
+$ $CLI_BREAKPAD/breakpad/linux/$(arch)/minidump_stackwalk libflutter-breakpad.so.dmp symbols/ > libflutter-breakpad.so.log
+```
