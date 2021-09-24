@@ -1,11 +1,15 @@
 package com.example.flutter_breakpad
 
-import android.os.Bundle
+import android.os.Handler
 import io.flutter.embedding.android.FlutterActivity
 
 class MainActivity: FlutterActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        Utils().crash()
+    private val utils = Utils()
+
+    override fun onResume() {
+        super.onResume()
+        Handler().postDelayed({
+            utils.crash()
+        }, 1000)
     }
 }
