@@ -4,6 +4,25 @@ An example Flutter project for demostrating how to intergrate [Google Breakpad](
 
 ## Android
 
+- Build `libbreakpad_client.a` on Linux (e.g. https://multipass.run/)
+
+> $BREAKPAD is local `fetch & gclient sync` of https://chromium.googlesource.com/breakpad/breakpad/
+
+> $NDK is local path of your Android NDK directory
+
+```sh
+cd $BREAKPAD/src/android
+cp -r google_breakpad jni
+$NDK/ndk-build
+```
+
+- Install `libbreakpad_client.a` of all architectures
+
+```sh
+mkdir -p ./android/app/src/main/cmakeLibs
+cp -r $BREAKPAD/src/android/obj/local/* ./android/app/src/main/cmakeLibs/
+```
+
 - run on macOS/Linux
 
 ```sh
