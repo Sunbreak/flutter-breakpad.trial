@@ -2,11 +2,11 @@
 
 An example Flutter project for demostrating how to intergrate [Google Breakpad](https://chromium.googlesource.com/breakpad/breakpad)
 
+> $BREAKPAD is local `fetch & gclient sync` of https://chromium.googlesource.com/breakpad/breakpad/
+
 ## Android
 
 - Build `libbreakpad_client.a` on Linux (e.g. https://multipass.run/)
-
-> $BREAKPAD is local `fetch & gclient sync` of https://chromium.googlesource.com/breakpad/breakpad/
 
 > $NDK is local path of your Android NDK directory
 
@@ -45,4 +45,16 @@ $ uuid=`awk 'FNR==1{print \$4}' libflutter-breakpad.so.sym`
 $ mkdir -p symbols/libflutter-breakpad.so/$uuid/
 $ mv ./libflutter-breakpad.so.sym symbols/libflutter-breakpad.so/$uuid/
 $ $CLI_BREAKPAD/breakpad/linux/$(arch)/minidump_stackwalk libflutter-breakpad.so.dmp symbols/ > libflutter-breakpad.so.log
+```
+
+## iOS
+
+- Build `libBreakpad.a` on macOS
+
+> Patch [fix missing encoding_util.h/m in iOS client project](https://github.com/Sunbreak/breakpad/commit/63619f6225f4c1083e58a9b83263451b617d0703) onto $BREAKPAD/src
+
+```sh
+cd $BREAKPAD/src/client/ios
+xcodebuild -sdk iphoneos -arch arm64 && xcodebuild -sdk iphonesimulator -arch x86_64
+lipo -create build/Release-iphoneos/libBreakpad.a build/Release-iphonesimulator/libBreakpad.a -output libBreakpad.a
 ```
