@@ -100,7 +100,8 @@ $ cp $data/Library/Caches/Breakpad/A1D2CF75-848E-42C4-8F5C-0406E8520647.dmp .
 > Only C/C++/Objective-C crash for now
 
 ```sh
-$ $CLI_BREAKPAD/breakpad/mac/dump_syms build/ios/Debug-iphonesimulator/Runner.app/Runner > Runner.sym
+$ dsymutil build/ios/Debug-iphonesimulator/Runner.app/Runner -o Runner.dSYM
+$ $CLI_BREAKPAD/breakpad/mac/dump_syms Runner.dSYM > Runner.sym
 $ uuid=`awk 'FNR==1{print \$4}' Runner.sym`
 $ mkdir -p symbols/Runner/$uuid/
 $ mv ./Runner.sym symbols/Runner/$uuid/
