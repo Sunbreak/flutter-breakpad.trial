@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		06D561ED270165B800F9F2E8 /* libBreakpad.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D561EC270165B800F9F2E8 /* libBreakpad.a */; };
 		06D561EF2701675800F9F2E8 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 06D561EE2701675800F9F2E8 /* libc++.tbd */; };
+		06D561F22701974400F9F2E8 /* util.m in Sources */ = {isa = PBXBuildFile; fileRef = 06D561F02701974400F9F2E8 /* util.m */; };
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
@@ -37,6 +38,8 @@
 		06D561EB2701645300F9F2E8 /* BreakpadController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BreakpadController.h; sourceTree = "<group>"; };
 		06D561EC270165B800F9F2E8 /* libBreakpad.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBreakpad.a; path = Runner/libBreakpad.a; sourceTree = "<group>"; };
 		06D561EE2701675800F9F2E8 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		06D561F02701974400F9F2E8 /* util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = util.m; sourceTree = "<group>"; };
+		06D561F12701974400F9F2E8 /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		33E43C7531C0EC547DBD68CE /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				06D561EA2701645300F9F2E8 /* Breakpad.h */,
 				06D561EB2701645300F9F2E8 /* BreakpadController.h */,
 				06D561E92701645300F9F2E8 /* BreakpadDefines.h */,
+				06D561F12701974400F9F2E8 /* util.h */,
+				06D561F02701974400F9F2E8 /* util.m */,
 			);
 			path = Runner;
 			sourceTree = "<group>";
@@ -268,6 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */,
+				06D561F22701974400F9F2E8 /* util.m in Sources */,
 				1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

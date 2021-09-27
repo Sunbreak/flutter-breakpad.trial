@@ -9,6 +9,10 @@ import Flutter
     ) -> Bool {
         BreakpadController.sharedInstance().start(true)
 
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1)) {
+            crash()
+        }
+
         GeneratedPluginRegistrant.register(with: self)
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
