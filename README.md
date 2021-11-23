@@ -51,7 +51,7 @@ $ $CLI_BREAKPAD/breakpad/linux/$(arch)/minidump_stackwalk libflutter-breakpad.so
 
 - Build universal `libBreakpad.a` on macOS
 
-> Patch [fix missing encoding_util.h/m in iOS client project](https://github.com/Sunbreak/breakpad/commit/63619f6225f4c1083e58a9b83263451b617d0703) onto $BREAKPAD/src
+> Patch [fix missing encoding_util.h/m in iOS client project](https://chromium-review.googlesource.com/c/breakpad/breakpad/+/3236246) onto $BREAKPAD/src
 
 ```sh
 cd $BREAKPAD/src/client/ios
